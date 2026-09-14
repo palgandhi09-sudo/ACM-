@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ACM SSGMCE — Shape the Future of Computing</title>
+<meta name="description" content="ACM Student Chapter at SSGMCE: a community of builders, competitive programmers and innovators.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=Michroma&family=Anton&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          background: '#edf4fd',
+          foreground: '#101725',
+          card: '#fcfeff',
+          'card-foreground': '#101725',
+          popover: '#fcfeff',
+          'popover-foreground': '#101725',
+          primary: '#1f54e1',
+          'primary-foreground': '#f9fcff',
+          secondary: '#e0e9f4',
+          'secondary-foreground': '#181f2e',
+          muted: '#e0e9f4',
+          'muted-foreground': '#5f6a7b',
+          accent: '#cfe0f5',
+          'accent-foreground': '#181f2e',
+          destructive: '#ea1d3b',
+          'destructive-foreground': '#f9fcff',
+          border: '#cbd5e2',
+          input: '#cbd5e2',
+          ring: '#1f54e1',
+          reel: '#070d19',
+          'reel-foreground': '#f1f5fb',
+          'reel-muted': '#8b939f',
+          'hero-sky': '#bce9fe',
+          'hero-foreground': '#032137',
+          'hero-muted': '#385971',
+          'hero-line': '#75b1ce',
+          ink: '#05070c',
+          'ink-foreground': '#f1f5fb',
+          signal: '#f12848',
+          mint: '#45d5b6',
+          violet: '#b27dff',
+          gold: '#dbb155'
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          heading: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+          mono: ['"Geist Mono"', 'ui-monospace', 'monospace']
+        },
+        borderRadius: {
+          DEFAULT: '.75rem'
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- SVG Filters -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <filter id="grungeRoughen" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.01 0.9" numOctaves="3" seed="7" result="noise"></feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.2" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+  </filter>
+</svg>
+
+<!-- ================= PRELOADER ================= -->
+<div id="preloader">
+  <div class="loader-content">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1500" class="logo-acm" id="acmSvg">
+      <g id="groupLight" fill="none" stroke="#0495d0" class="logo-fill-anim">
+        <path d="M556 1211.5 364.5 1020h132.1l125.6 125.6 125.6 125.6 51.3-50.8c28.2-28 62.4-62 76.2-75.6l24.9-24.8h131.3l-140.6 140.3c-77.3 77.1-141.2 140.7-142 141.4-1.3 1-32.7-30-192.9-190.2zM92.8 880.3c-3.8-.2-6.8-.8-6.8-1.2 0-.5-2.7-1.2-6-1.6s-6-1.1-6-1.5-1.5-1.1-3.4-1.4c-7.1-1.4-21.1-10-29.3-18.2-5.4-5.4-13.5-17.1-14.8-21.4-.4-1.4-1.1-2.9-1.5-3.5-.4-.5-1.1-2.6-1.5-4.5s-1.2-4.1-1.9-4.9c-1.5-1.9-1.5-37.9 0-38.9.6-.4 1.5-2.6 1.9-4.9.4-2.4 1-4.3 1.5-4.3.4 0 1-1.4 1.4-3 .3-1.7 1-3.6 1.6-4.3.5-.6 2.8-4 5.1-7.4 4.4-6.8 13.4-15.1 21.7-20.1 2.9-1.8 5.6-3.2 6-3.2.4-.1 2.5-.9 4.7-2s4.8-1.9 5.8-2c.9 0 1.7-.4 1.7-.9s1.8-1.2 4-1.6 4.2-1 4.5-1.5c.3-.4 2.8-1.1 5.5-1.5 2.8-.4 5-1 5-1.5 0-.4 2.5-1.1 5.7-1.5 3.1-.4 6.3-1.1 7.2-1.5.9-.5 5.9-1.6 11.1-2.5 10.8-1.7 20.4-3.6 30.5-6 3.9-.8 9.3-2 12-2.6 2.8-.6 5.5-1.4 6-1.9.6-.4 3-1.1 5.5-1.5s5-1.1 5.5-1.5c.6-.4 2.3-1 3.9-1.4 1.5-.4 3.9-1.4 5.2-2.3 2.1-1.4 2.4-2.3 2.4-8.4 0-3.7-.4-7-.9-7.3-.4-.3-1.1-3-1.4-6-.6-6.2-6.1-16-9.6-17.1-1.2-.3-2.1-1-2.1-1.5 0-.4-1.2-1.1-2.7-1.5-1.5-.3-3.1-1.1-3.4-1.6-.3-.6-3.1-1.3-6.3-1.6-3.1-.3-5.9-1-6.2-1.4-.7-1.2-31.1-1.2-31.8 0-.3.4-2.3 1.1-4.4 1.4-3.7.6-9.3 3-12 5.1-3.9 3.1-9.1 9-10.8 12.3-1 2.1-2.2 4-2.6 4.1-.5.2-.8.8-.8 1.4 0 .5-.7 2.5-1.6 4.4-1.3 2.7-2.2 3.4-4.5 3.4-1.6 0-2.9-.4-2.9-.9 0-.4-3.6-1.2-8-1.5-4.4-.4-8.2-1.1-8.5-1.6-.3-.4-4.1-1.1-8.5-1.5s-8.2-1.1-8.5-1.5c-.3-.5-3.9-1.1-8-1.5-4.2-.4-7.8-1.1-8.1-1.6s-1.9-.9-3.6-.9c-2.3 0-2.8-.3-2-1.2.5-.7 1.3-2.8 1.7-4.6s1.3-4.5 2.1-6 1.4-3.5 1.4-4.4c0-1 .4-1.8.9-1.8s1.2-1.3 1.6-3c.4-1.6 1-3 1.4-3 .3 0 1.2-1.2 1.9-2.7 1.7-3.9 3.6-7 5.5-9.1 1-1 1.7-2.1 1.7-2.5 0-1.3 12.8-13.5 17.6-16.7 6.2-4.3 13.1-8 15-8 .7 0 1.4-.4 1.4-.9s1.6-1.2 3.6-1.6c2-.3 4.4-1 5.3-1.5 1.6-.9 7-2.2 16.1-4 2.5-.5 6.6-.9 9.2-.9 2.6-.1 5-.5 5.3-1.1.8-1.2 47.1-1.4 47.9-.1.3.4 4.9 1.1 10.3 1.5 5.3.4 10.2 1.1 10.7 1.5.6.5 3.5 1.2 6.3 1.6 2.9.4 5.5 1.1 5.9 1.6.3.5 1.3.9 2.2.9.9.1 3.5.9 5.7 2s4.4 1.9 4.8 2c2.3.1 16 10.1 21.5 15.8 6.1 6.1 12.2 16.4 12.2 20.5 0 .9.4 1.7.9 1.7s1.3 3 1.6 6.8c.4 3.7 1.3 7.3 1.9 8.1.8 1 1.2 23.5 1.4 79.9.1 43.2.6 79 1.1 79.6.4.6 1.1 4.7 1.5 9 .3 4.4 1 8.2 1.5 8.5.4.3 1.1 2.5 1.4 4.7.4 2.3 1.4 5.4 2.2 7s1.5 3.7 1.5 4.7c0 .9.5 1.7 1 1.7.6 0 1 .8 1 1.8 0 .9.9 3.4 2 5.5 1.1 2 2 3.9 2 4.2s-15.2.4-33.7.3l-33.7-.3-2.4-8c-1.3-4.4-2.6-8.7-3-9.5-.3-.8-1.1-3.5-1.6-6-1.4-5.7-3.6-6.3-8.1-1.8-4.3 4.2-5.2 4.9-10.3 8.3-2.3 1.5-4.2 3.2-4.2 3.6 0 .5-.5.9-1.1.9s-4.5 2-8.5 4.5c-4.1 2.4-8.6 4.8-10.1 5.1-1.5.4-3.8 1.3-5.2 2-1.4.8-3.4 1.4-4.3 1.4-1 0-1.8.4-1.8.9s-2.6 1.2-5.7 1.6c-3.2.4-6.3 1.1-6.8 1.5-1.2 1-25.1 1.9-34.7 1.3zm42-47.3c.9-.5 4.3-1.2 7.5-1.5 3.1-.4 5.7-1.1 5.7-1.6s.7-.9 1.6-.9c6.2 0 27-15.9 29-22.2.3-1 .9-1.8 1.4-1.8s1.2-1.5 1.5-3.2c.4-1.8 1.2-3.6 1.7-3.9 1.2-.7 2.9-18.7 3.4-36.8l.5-14.4-6.2.7c-3.5.3-6.5 1-6.8 1.5s-3 1.2-5.8 1.6c-2.9.4-5.5 1-5.8 1.5-.3.4-3 1.1-6.1 1.5-3.2.4-6.4 1.1-7.3 1.6s-4.3 1.3-7.6 1.8c-5.4.9-14.2 3-25 6.1-11.8 3.3-21.5 10.7-25.8 19.8-1.8 3.9-2.2 6.4-2.2 14.5 0 6.4.4 10 1.2 10.5.6.4 1.5 2 1.8 3.5.4 1.5 1.1 2.7 1.5 2.7.5 0 1.1.8 1.5 1.9.7 2.4 8.5 10.1 10.2 10.1.7 0 1.3.4 1.3.8 0 1.3 9.7 5.2 12.8 5.2 1.5 0 3.4.5 4.2 1 1.9 1.2 9.5 1.3 11.8 0zM421.8 880.3c-4.3-.2-7.8-.8-7.8-1.2 0-.5-3.4-1.2-7.5-1.6s-7.5-1-7.5-1.5-1.9-1.1-4.2-1.5-4.9-1.1-5.8-1.6c-.8-.4-3.7-1.8-6.5-3-2.7-1.2-5.7-2.5-6.5-3s-2.2-1.2-3-1.6c-1.6-.6-15.6-9.9-17.8-11.7-8.5-7.2-25.2-27.1-25.2-30.1 0-.7-.4-1.5-.8-1.7-1.1-.4-7.9-14.7-8.8-18.3-.4-1.7-1-3.4-1.4-4-.4-.5-1.1-2.9-1.5-5.2-.4-2.4-1-4.5-1.5-4.8-.4-.3-1.1-3.3-1.5-6.7-.4-3.5-1.2-6.9-1.9-7.7-1.6-2-1.6-64.2 0-66.2.6-.8 1.5-4.1 1.9-7.4s1-6.4 1.5-7c.4-.5 1.1-2.9 1.5-5.3s1.3-5.6 2.1-7c.8-1.5 1.4-3 1.4-3.4 0-1.3 7.2-16.3 8-16.8.5-.3 1.1-1.7 1.5-3.2s1.3-2.9 2.1-3.2 1.4-1.2 1.4-2 .3-1.6.8-1.8c.4-.1 1.8-1.6 3.1-3.3 4-5.3 12.5-13.9 17.6-18 2.8-2.2 5.2-4.3 5.5-4.6 1.2-1.3 18.2-10.9 20.5-11.5 1.4-.3 2.5-1 2.5-1.5s1-.9 2.3-.9c1.2 0 3.4-.6 4.9-1.4 1.4-.8 4.6-1.7 7-2.1s4.8-1.1 5.4-1.6 4.8-1.2 9.3-1.6c4.4-.3 8.1-1 8.1-1.4 0-.5 8.6-.9 19-.9 10.5 0 19 .4 19 .9 0 .4 3.7 1.1 8.1 1.4 4.5.4 8.7 1.1 9.3 1.6.6.4 3.2 1.2 5.9 1.5 2.6.4 5.9 1.4 7.5 2.2 1.5.7 3.5 1.4 4.5 1.4.9 0 1.7.5 1.7 1 0 .6.5 1 1.1 1 4.6 0 21.2 11.1 30.1 20 6.8 6.9 16.8 20.4 16.8 22.7 0 .7.4 1.3.9 1.3s1.2 1.2 1.6 2.7c.3 1.5 1 3 1.3 3.3 1.6 1.2 8.2 17.6 8.2 20.3 0 1-.8 1.7-2 1.7-1.1 0-2 .4-2 .9 0 .4-3.6 1.2-8 1.5-4.4.4-8.2 1.1-8.5 1.6-.3.4-4.1 1.1-8.5 1.5s-8.3 1.1-8.6 1.6-2 .9-3.7.9c-1.8.1-6.8.7-11.2 1.6-4.4.8-9.4 1.7-11.1 2-3.1.6-3.2.5-3.9-3.7-.4-2.4-1.1-5-1.5-5.9-.4-.8-1.9-4.1-3.3-7.2-1.5-3.2-4.3-7.5-6.3-9.8-4.1-4.6-14.2-11-17.2-11-1.1 0-2.2-.6-2.4-1.2-.4-1-4.8-1.3-17.6-1.3-12.3 0-17.4.3-18.3 1.3-.7.6-2.1 1.2-3 1.2-3.7 0-12.7 5.6-18.4 11.5-7 7.1-9.5 10.4-9.5 12.2 0 .7-.4 1.3-1 1.3-.5 0-1.2 1.6-1.6 3.5-.3 1.9-1 3.5-1.4 3.5-.5 0-1.1 2.4-1.5 5.3-.4 2.8-1.1 5.4-1.6 5.7-2 1.3-4.7 44.6-3 46.3.6.6 1.1 4.3 1.2 8.2 0 3.8.4 9.3.9 12 1.9 10.7 3.4 16.5 4.2 16.5.4 0 .8.9.8 2 0 3.8 7.5 16.3 13.1 21.9 6.3 6.4 16.1 11.9 22.5 12.8 2.4.3 4.4 1 4.4 1.4 0 1.2 25.7 1.2 26.4 0 .3-.4 2.5-1.1 4.8-1.5s4.5-1 4.8-1.4 2.3-1.6 4.4-2.7c8.1-4.1 18.5-18.1 20.2-27.1.3-1.9 1-3.4 1.5-3.4.4 0 1.1-2.7 1.5-5.9.3-3.3 1.2-6.2 1.9-6.4.6-.3 3.8-.1 7.1.4 14.5 2.1 24.4 3.8 26.1 4.3 1 .3 6.3 1.2 11.8 2.1 23.8 3.6 21.8 2.9 21 6.8-.3 1.8-1 4.1-1.5 5.2-1.5 3.6-5.1 14.9-5.7 17.8-.3 1.5-.9 2.7-1.3 2.7-.5 0-1.1 1.4-1.5 3-.4 1.7-1 3-1.4 3-.3 0-1.2 1.2-1.8 2.8-1.2 2.6-3.3 6.2-4.3 7.2-1.1 1.1-5 7-5 7.5 0 1.5-17.2 17.7-22.6 21.3-7.6 5.1-21.4 12.2-23.6 12.2-.9 0-1.9.4-2.3.9-.3.6-2.6 1.3-5 1.7-2.5.3-4.7 1-5 1.4-.3.5-3.6 1.2-7.3 1.5-3.7.4-7.1 1.1-7.7 1.5-1.2 1-30.8 1.9-41.7 1.3zM609 742V609h62v17.4c0 11.5.4 17.7 1.1 18.2.6.3 4.5-2.9 8.7-7.2 4.3-4.4 9.3-9.2 11.2-10.8 9-7.3 25.3-16.5 32.5-18.2 1.7-.4 3.5-1.1 4.1-1.5.6-.5 3.9-1.2 7.3-1.5 3.4-.4 6.4-1.1 6.7-1.5.7-1.2 26-1.1 28.2.1.9.5 4.3 1.2 7.5 1.5 3.1.4 5.7 1 5.7 1.5 0 .4 1.5 1.1 3.3 1.4 9.8 1.8 28.9 15.4 35.5 25.2.7 1 2.7 4 4.4 6.7 3.3 5 4.9 5.7 7 3.2 4.3-5.2 17.3-17.6 21-20 2.4-1.6 4.8-3.4 5.3-3.9.6-.6 2.6-1.9 4.5-2.9 1.9-1.1 4.6-2.5 6-3.2 7.7-4.2 20.7-8.5 25.6-8.5 1.8 0 3.6-.4 3.9-1 .8-1.2 28.2-1.4 28.9-.1.3.4 3.3 1.1 6.7 1.5 3.4.3 6.7 1 7.3 1.5s2.5 1.2 4.2 1.5c5 1.1 18.2 8.2 23.8 12.9 5.3 4.4 11.6 10.8 11.6 11.8 0 .5 1.2 2.1 4.9 6.6.6.6 1.3 2.3 1.7 3.7.3 1.4.9 2.6 1.3 2.6.9 0 4.9 12.5 6.2 19.5 2.3 12.6 2.7 31.8 2.8 119.3l.1 90.2h-67.8l-.4-90.8c-.2-64.8-.6-91.3-1.4-92.3-.6-.8-1.4-4.3-1.8-7.8-.3-3.5-1-6.9-1.5-7.5s-1.2-2.2-1.6-3.6c-.4-1.3-1.3-2.9-1.9-3.6-.6-.6-2-2.4-3-3.8s-2.5-2.6-3.2-2.6c-.8 0-1.4-.4-1.4-.9 0-1.2-7.6-5.1-10-5.1-1 0-2.2-.4-2.5-1s-5.2-1-11-1-10.7.4-11 1-1.6 1-2.8 1c-6 .1-25.7 13.8-25.7 17.9 0 .6-.4 1.1-.8 1.1-1.2 0-7.1 12.3-7.9 16.2-.3 1.8-.9 3.8-1.4 4.3-1.2 1.6-3 17.4-3.9 34.5-.5 8.5-.9 44.4-.9 79.8L838 875h-68l-.3-90.7c-.4-94-.7-101.5-4.6-110.4-3.8-8.5-13.3-16.9-19.1-16.9-1 0-2.2-.4-2.5-1-.8-1.3-22.2-1.3-23 0-.3.6-1.8 1-3.3 1-4.4 0-17 7-22.4 12.4-9.3 9.3-13.1 18.2-15.9 36.9-1.7 11.8-1.9 19.2-1.9 90.8V875h-68zM556.1 271c105-105.1 191.3-191 191.7-191s64.4 63.7 142.2 141.5L1031.5 363H900.4l-75.5-75.5c-41.5-41.5-76.1-75.5-77-75.5s-57.8 56.2-126.5 125L496.5 462H365.1z" />
+      </g>
+      <g id="groupDark" fill="none" stroke="#04609f" class="logo-fill-anim">
+        <path d="M957 1062.6c0-.3 72-72.5 160-160.5s160-160.5 160-161.2c0-.6-71.9-73.1-159.8-161L957.3 420h131.2l160.3 160.3c88.1 88.1 160.2 160.5 160.2 161 0 .4-72.2 72.9-160.5 161.2L1088 1063h-65.5c-36 0-65.5-.2-65.5-.4z" />
+        <text x="590" y="980" class="svg-chapter-text">SSGMCE</text>
+      </g>
+    </svg>
+    <div class="chapter-title" id="chapterTitle">SSGMCE ACM</div>
+  </div>
+</div>
+
+<div class="min-h-screen bg-background relative selection:bg-primary selection:text-white">
+
+  <!-- ================= SITE HEADER (ACM NIT SURAT THEMED - LIGHT SPEC) ================= -->
+  <header id="siteHeader" class="acm-navbar-header sticky top-0 z-50 w-full transition-all duration-200">
+    <nav class="acm-navbar-nav" aria-label="Main navigation">
+      
+      <!-- Brand Block -->
+      <a href="#hero" class="acm-brand-block" aria-label="ACM SSGMCE Home">
+        <svg viewBox="0 0 200 200" class="acm-brand-logo-svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="nav-acm-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#3b82f6"></stop>
+              <stop offset="50%" stop-color="#1f54e1"></stop>
+              <stop offset="100%" stop-color="#103bb0"></stop>
+            </linearGradient>
+          </defs>
+          <path d="M 100,0 L 200,100 L 100,200 L 0,100 Z" fill="url(#nav-acm-gradient)"></path>
+          <circle cx="100" cy="100" r="58" fill="none" stroke="#ffffff" stroke-width="6"></circle>
+          <text x="100" y="108" font-family="'Space Grotesk', sans-serif" font-size="44" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="-1">acm</text>
+          <text x="100" y="130" font-family="'Geist Mono', monospace" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1">SSGMCE</text>
+        </svg>
+        <div class="acm-brand-text">
+          <span class="acm-brand-name">ACM</span>
+          <span class="acm-brand-sub">SSGMCE SHEGAON</span>
+        </div>
+      </a>
+
+      <!-- Center Expandable Plate -->
+      <div class="acm-plate-wrapper" id="navPlateWrapper">
+        <div class="acm-plate" id="navPlate" role="navigation" aria-label="Scene indicator">
+          <!-- Ambient Effects -->
+          <div class="acm-plate-background">
+            <div class="acm-reg-mark acm-reg-left" aria-hidden="true">+</div>
+            <div class="acm-reg-mark acm-reg-right" aria-hidden="true">+</div>
+            <div class="acm-plate-ambient-sweep" aria-hidden="true"></div>
+            <div class="acm-plate-dust">
+              <span class="acm-dust-mote acm-dust-mote1"></span>
+              <span class="acm-dust-mote acm-dust-mote2"></span>
+              <span class="acm-dust-mote acm-dust-mote3"></span>
+            </div>
+          </div>
+
+          <!-- Idle Content: NOW SHOWING -->
+          <div class="acm-plate-content" id="plateContent">
+            <span class="acm-scene-number" id="plateSceneNum">SC.01</span>
+            <span class="acm-now-showing-lbl">NOW SHOWING</span>
+            <span class="acm-plate-sep">—</span>
+            <span class="acm-section-name" id="plateSectionName">HERO</span>
+            <span class="acm-timecode" id="plateTimecode">00:00:01</span>
+          </div>
+
+          <!-- Expanded Nav Items (Revealed on Hover / Focus) -->
+          <div class="acm-nav-items-container" id="plateNavItems">
+            <a class="acm-nav-item" href="events.html">
+              <span class="acm-nav-item-scene">SC.03</span>
+              <span class="acm-nav-item-label">Events</span>
+            </a>
+            <a class="acm-nav-item" href="leaderboard.html">
+              <span class="acm-nav-item-scene">SC.04</span>
+              <span class="acm-nav-item-label">Leaderboard</span>
+            </a>
+            <a class="acm-nav-item" href="projects.html">
+              <span class="acm-nav-item-scene">SC.05</span>
+              <span class="acm-nav-item-label">Projects</span>
+            </a>
+            <a class="acm-nav-item" href="blog.html">
+              <span class="acm-nav-item-scene">SC.06</span>
+              <span class="acm-nav-item-label">Blogs</span>
+            </a>
+
+            <!-- Index Menu Dropdown: On index.html, Team is present -->
+            <div class="acm-nav-item acm-index-menu-wrapper">
+              <span class="acm-nav-item-scene">MENU</span>
+              <span class="acm-nav-item-label">INDEX +</span>
+              <div class="acm-index-dropdown">
+                <a class="acm-dropdown-item" href="#hero">
+                  <span class="acm-dropdown-scene">SC.01</span>
+                  <span class="acm-dropdown-label">Hero</span>
+                </a>
+                <a class="acm-dropdown-item" href="#about">
+                  <span class="acm-dropdown-scene">SC.02</span>
+                  <span class="acm-dropdown-label">About</span>
+                </a>
+                <a class="acm-dropdown-item" href="#team">
+                  <span class="acm-dropdown-scene">SC.07</span>
+                  <span class="acm-dropdown-label">Team</span>
+                </a>
+              </div>
+            </div>
+
+            <a class="acm-nav-item acm-nav-item-join" href="#join">
+              <span class="acm-nav-item-scene">↗</span>
+              <span class="acm-nav-item-label">Join Us</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right CTAs: Sign In & Mobile Menu Toggle -->
+      <div class="acm-nav-right">
+        <button type="button" class="acm-signin-pill hidden sm:inline-flex" id="openSignInBtn">
+          Sign In
+        </button>
+        <button type="button" id="mobileMenuToggle" class="acm-mobile-toggle lg:hidden" aria-label="Toggle navigation" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Scene Strip -->
+    <div class="acm-mobile-strip lg:hidden" id="mobileStrip">
+      <div class="acm-mobile-strip-inner">
+        <a href="#hero" class="acm-mobile-chip is-active"><span class="acm-mobile-chip-code">SC.01</span><span>Home</span></a>
+        <a href="#about" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.02</span><span>About</span></a>
+        <a href="events.html" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.03</span><span>Events</span></a>
+        <a href="leaderboard.html" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.04</span><span>Leaderboard</span></a>
+        <a href="projects.html" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.05</span><span>Projects</span></a>
+        <a href="blog.html" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.06</span><span>Blogs</span></a>
+        <a href="#team" class="acm-mobile-chip"><span class="acm-mobile-chip-code">SC.07</span><span>Team</span></a>
+        <button type="button" class="acm-mobile-chip acm-mobile-chip-cta" id="mobileOpenSignInBtn"><span>Sign In</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO SECTION ================= -->
+    <section id="hero" class="relative isolate overflow-hidden bg-hero-sky text-hero-foreground">
+      <div class="hero-light-bg absolute inset-0 -z-10"></div>
+      <video class="hero-light-video absolute inset-0 -z-10 h-full w-full object-cover" src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/769db6d0-8953-40c6-bfb3-9159d2b51b0b/hero-background.webm" autoplay="" loop="" muted="" playsinline="" aria-hidden="true"></video>
+      <div class="hero-light-bg hero-tint-overlay absolute inset-0 -z-10"></div>
+      <div class="grain-overlay -z-10"></div>
+
+      <!-- Lightning / Thunder Canvas Overlay -->
+      <canvas id="lightningCanvas"></canvas>
+      <div id="screenFlash" class="screen-flash"></div>
+
+      <div class="mx-auto grid w-full max-w-[1360px] items-center gap-14 px-6 py-20 lg:grid-cols-[1fr_0.95fr] lg:py-28 relative z-20">
+        <div>
+          <p class="label-mono flex items-center gap-3 text-hero-muted">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary animate-ping"></span>
+            SC. 01 — ACM SSGMCE
+          </p>
+          <h1 class="display-grit mt-8 text-[clamp(3rem,7.5vw,6.5rem)]">
+            <span class="block" data-text="Shape the">Shape the</span>
+            <span class="block" data-text="Future of">Future of</span>
+            <span class="block text-primary" data-text="Computing">Computing</span>
+          </h1>
+          <div class="mt-8 h-px w-20 bg-primary/70"></div>
+          <p class="mt-8 max-w-md text-lg text-hero-muted leading-relaxed">
+            A community of builders, innovators, and problem-solvers shaping what comes next.
+          </p>
+
+          <!-- Explore Button with Thunder/Lightning Trigger -->
+          <div class="mt-10 flex items-center gap-4">
+            <button id="exploreBtn" class="label-mono inline-flex items-center gap-3 rounded-full border border-hero-line bg-card/90 px-8 py-4 text-[11px] font-semibold text-hero-foreground shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:shadow-lg cursor-pointer">
+              <span class="text-primary font-bold text-sm">▸</span> Explore
+            </button>
+          </div>
+        </div>
+
+        <!-- Photo Reel with Centered Glow -->
+        <div class="relative flex justify-center items-center" id="reelWrapper">
+          <div class="hero-reel-glow absolute inset-0 -z-10 blur-3xl"></div>
+          <img id="photoReelImg" src="img/acm-photo-wheel.png" alt="Film reel holding photographs from ACM SSGMCE events" class="float-soft w-full max-w-[560px] drop-shadow-[0_40px_80px_oklch(0.1_0.02_264/0.8)]">
+        </div>
+      </div>
+
+      <div class="label-mono flex items-center justify-between gap-4 border-t border-hero-line px-6 py-4 text-[10px] text-hero-muted relative z-20">
+        <span>Legacy</span>
+        <span>Building technology. Building people.</span>
+        <span>Community</span>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT SECTION ================= -->
+    <section id="about" class="relative overflow-hidden py-24 scroll-mt-20">
+      <!-- Animated Tech Grid Canvas Background (Image 3) -->
+      <canvas id="aboutGridCanvas" class="about-grid-canvas"></canvas>
+      <div class="concrete-overlay"></div>
+      <div class="relative mx-auto w-full max-w-[1360px] px-6">
+        
+        <!-- Story -->
+        <div class="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <p class="label-mono text-primary">SC. 02 — The full story</p>
+            <h2 class="mt-5 font-heading text-[clamp(2.4rem,5vw,4rem)] font-bold tracking-tight">About ACM SSGMCE</h2>
+            <p class="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/80">
+              The ACM Student Chapter at SSGMCE is a prominent technical student organization affiliated with the world's largest computing society. Founded in 2005, we have served as a hub for computing enthusiasts to collaborate, learn, and grow for nearly two decades. We don't just talk about technology. We build it, compete with it, and ship it.
+            </p>
+            <div class="mt-10 h-px w-16 bg-primary"></div>
+          </div>
+          <div class="flex justify-center lg:justify-end">
+            <div class="relative w-full max-w-[380px]" style="rotate:-5deg">
+              <div class="mb-1 h-9 w-[92%] origin-bottom-left rounded-[3px]" style="rotate:-12deg;background-image:repeating-linear-gradient(105deg, oklch(0.13 0.012 264) 0 22px, oklch(0.508 0.221 264) 22px 44px)"></div>
+              <div class="relative overflow-hidden rounded-md bg-ink px-6 py-6 text-ink-foreground shadow-[0_30px_60px_-30px_oklch(0.2_0.03_265/0.6)]">
+                <div class="grain-overlay"></div>
+                <p class="font-heading text-2xl font-bold tracking-wide">ABOUT ACM</p>
+                <div class="mt-4 flex items-center justify-between border-b border-white/15 pb-3 text-sm text-ink-foreground/80">
+                  <span>SCENE: 02</span><span>TAKE: 01</span>
+                </div>
+                <div class="label-mono mt-4 flex items-end justify-between text-[9px] text-ink-foreground/60">
+                  <span>ACM SSGMCE • SSGMCE</span><span class="text-sm tracking-normal normal-case">EST. 2005</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mission -->
+        <div class="mt-32 grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div class="flex justify-center lg:justify-start">
+            <div class="relative w-full max-w-[380px]" style="rotate:-8deg">
+              <div class="mb-1 h-9 w-[92%] origin-bottom-left rounded-[3px]" style="rotate:-12deg;background-image:repeating-linear-gradient(105deg, oklch(0.13 0.012 264) 0 22px, oklch(0.79 0.13 175) 22px 44px)"></div>
+              <div class="relative overflow-hidden rounded-md bg-ink px-6 py-6 text-ink-foreground shadow-[0_30px_60px_-30px_oklch(0.2_0.03_265/0.6)]">
+                <div class="grain-overlay"></div>
+                <p class="font-heading text-2xl font-bold tracking-wide">OUR MISSION</p>
+                <div class="mt-4 flex items-center justify-between border-b border-white/15 pb-3 text-sm text-ink-foreground/80">
+                  <span>SCENE: 02</span><span>TAKE: 02</span>
+                </div>
+                <div class="label-mono mt-4 flex items-end justify-between text-[9px] text-ink-foreground/60">
+                  <span>ACM SSGMCE • SSGMCE</span><span class="text-sm tracking-normal normal-case">EST. 2005</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="lg:text-right">
+            <p class="label-mono text-primary">SC. 02 — The objective</p>
+            <h2 class="mt-5 font-heading text-[clamp(2.4rem,5vw,4rem)] font-bold tracking-tight">Our Mission</h2>
+            <p class="mt-8 text-lg leading-relaxed text-foreground/80">
+              Our mission is to enhance the coding culture at SSGMCE by fostering an environment of learning, sharing, and productivity. Guided by our motto — "Building technology. Building people." — we focus on both technical skill development and personal growth.
+            </p>
+            <div class="mt-10 ml-auto h-px w-16 bg-primary"></div>
+          </div>
+        </div>
+
+        <!-- Vision -->
+        <div class="mt-32 grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+          <div>
+            <p class="label-mono text-primary">SC. 02 — The future</p>
+            <h2 class="mt-5 font-heading text-[clamp(2.4rem,5vw,4rem)] font-bold tracking-tight">Our Vision</h2>
+            <p class="mt-8 max-w-2xl text-lg leading-relaxed text-foreground/80">
+              We envision a community where every individual has the resources, mentorship, and opportunities to tackle challenges in the field of computing, participate in global standards, and bring their most ambitious ideas to life.
+            </p>
+            <div class="mt-10 h-px w-16 bg-primary"></div>
+          </div>
+          <div class="flex justify-center lg:justify-end">
+            <div class="relative w-full max-w-[380px]" style="rotate:6deg">
+              <div class="mb-1 h-9 w-[92%] origin-bottom-left rounded-[3px]" style="rotate:-12deg;background-image:repeating-linear-gradient(105deg, oklch(0.13 0.012 264) 0 22px, oklch(0.7 0.19 300) 22px 44px)"></div>
+              <div class="relative overflow-hidden rounded-md bg-ink px-6 py-6 text-ink-foreground shadow-[0_30px_60px_-30px_oklch(0.2_0.03_265/0.6)]">
+                <div class="grain-overlay"></div>
+                <p class="font-heading text-2xl font-bold tracking-wide">OUR VISION</p>
+                <div class="mt-4 flex items-center justify-between border-b border-white/15 pb-3 text-sm text-ink-foreground/80">
+                  <span>SCENE: 02</span><span>TAKE: 03</span>
+                </div>
+                <div class="label-mono mt-4 flex items-end justify-between text-[9px] text-ink-foreground/60">
+                  <span>ACM SSGMCE • SSGMCE</span><span class="text-sm tracking-normal normal-case">EST. 2005</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= JOURNEY SECTION ================= -->
+    <section id="journey" class="relative overflow-hidden py-20">
+      <p class="pointer-events-none absolute inset-x-0 top-10 -z-10 text-center font-heading text-[16vw] font-bold text-primary/[0.07] select-none" aria-hidden="true">LEGACY</p>
+      <div class="mx-auto w-full max-w-[1360px] px-6">
+        <p class="label-mono text-foreground/70">The journey so far</p>
+        <div class="mt-10 flex snap-x gap-6 overflow-x-auto pb-6">
+          <article class="min-h-[280px] w-[278px] shrink-0 snap-start rounded-xl border border-border bg-card p-6 shadow-[0_24px_50px_-40px_oklch(0.2_0.03_265/0.7)]">
+            <p class="font-heading text-4xl font-bold tracking-tight">2005</p>
+            <p class="mt-3 font-heading text-sm font-semibold">Founded</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The ACM Student Chapter at SSGMCE was established, becoming a hub for computing enthusiasts to collaborate and learn.</p>
+          </article>
+          <article class="min-h-[280px] w-[278px] shrink-0 snap-start rounded-xl border border-border bg-card p-6 shadow-[0_24px_50px_-40px_oklch(0.2_0.03_265/0.7)]">
+            <p class="font-heading text-4xl font-bold tracking-tight">2016</p>
+            <p class="mt-3 font-heading text-sm font-semibold">Inception Launched</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Our flagship competitive programming contest began, setting the stage for algorithmic excellence.</p>
+          </article>
+          <article class="min-h-[280px] w-[278px] shrink-0 snap-start rounded-xl border border-border bg-card p-6 shadow-[0_24px_50px_-40px_oklch(0.2_0.03_265/0.7)]">
+            <p class="font-heading text-4xl font-bold tracking-tight">2019</p>
+            <p class="mt-3 font-heading text-sm font-semibold">DotSlash Born</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">The inaugural 30-hour national-level hackathon, "DotSlash: Root to Ideas", was successfully organized.</p>
+          </article>
+          <article class="min-h-[280px] w-[278px] shrink-0 snap-start rounded-xl border border-border bg-card p-6 shadow-[0_24px_50px_-40px_oklch(0.2_0.03_265/0.7)]">
+            <p class="font-heading text-4xl font-bold tracking-tight">2020</p>
+            <p class="mt-3 font-heading text-sm font-semibold">Pandemic Resilience</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Transitioned to online contests like Inception 5.0 and the ACM Summer Challenge without missing a beat.</p>
+          </article>
+          <article class="min-h-[280px] w-[278px] shrink-0 snap-start rounded-xl border border-border bg-card p-6 shadow-[0_24px_50px_-40px_oklch(0.2_0.03_265/0.7)]">
+            <p class="font-heading text-4xl font-bold tracking-tight">2026</p>
+            <p class="mt-3 font-heading text-sm font-semibold">Continuing the Legacy</p>
+            <p class="mt-3 text-sm leading-relaxed text-muted-foreground">Consistently hosting nationwide events like Epiphany, and staying true to our motto: 'Building technology. Building people.'</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= COMMUNITY ================= -->
+    <section id="community" class="relative overflow-hidden py-20">
+      <p class="pointer-events-none absolute inset-x-0 top-0 -z-10 text-center font-heading text-[14vw] font-bold text-primary/[0.06] select-none" aria-hidden="true">COMMUNITY</p>
+      <div class="mx-auto w-full max-w-[1360px] px-6">
+        <p class="label-mono text-center text-primary">What we stand for</p>
+        <h2 class="mt-5 text-center font-heading text-[clamp(1.9rem,4.2vw,3.2rem)] font-bold tracking-tight">Three things. One community.</h2>
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          <article class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-b from-card to-background p-8 pt-24 transition-transform hover:-translate-y-1">
+            <span class="label-mono absolute top-6 right-6 text-muted-foreground">01</span>
+            <h3 class="font-heading text-2xl font-bold tracking-tight">Compete</h3>
+            <p class="mt-4 text-sm leading-relaxed text-muted-foreground">ICPC, Codeforces, ranked battles. We don't just learn to code — we test ourselves against the best.</p>
+          </article>
+          <article class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-b from-card to-background p-8 pt-24 transition-transform hover:-translate-y-1">
+            <span class="label-mono absolute top-6 right-6 text-muted-foreground">02</span>
+            <h3 class="font-heading text-2xl font-bold tracking-tight">Build</h3>
+            <p class="mt-4 text-sm leading-relaxed text-muted-foreground">Hackathons, real shipped products, open-source contributions. Ideas don't stay ideas here.</p>
+          </article>
+          <article class="group relative overflow-hidden rounded-2xl border border-border bg-gradient-to-b from-card to-background p-8 pt-24 transition-transform hover:-translate-y-1">
+            <span class="label-mono absolute top-6 right-6 text-muted-foreground">03</span>
+            <h3 class="font-heading text-2xl font-bold tracking-tight">Connect</h3>
+            <p class="mt-4 text-sm leading-relaxed text-muted-foreground">A 500+ member network across companies, campuses, and careers. You're never building alone.</p>
+          </article>
+        </div>
+        <figure class="relative mt-16 overflow-hidden rounded-2xl">
+          <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/34231a28-5ec9-48dd-8ca3-14727e5b2b2a/team-group.jpg" alt="ACM SSGMCE members gathered for a chapter photograph" class="h-[420px] w-full object-cover grayscale md:h-[560px]" loading="lazy">
+          <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/40 to-reel/10"></div>
+          <div class="grain-overlay"></div>
+          <figcaption class="absolute inset-x-0 bottom-10 px-6 text-center text-reel-foreground">
+            <p class="font-heading text-[clamp(1.3rem,3.2vw,2.4rem)] font-semibold italic">"Building technology. Building people."</p>
+            <p class="label-mono mt-4 text-reel-muted">— ACM SSGMCE, since 2005</p>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= TEAM SECTION ================= -->
+    <section id="team" class="py-24 scroll-mt-20">
+      <div class="mx-auto w-full max-w-[1360px] px-6">
+        <div class="grid items-center gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <div class="flex justify-center lg:justify-start">
+            <div class="relative w-full max-w-[380px]" style="rotate:-8deg">
+              <div class="mb-1 h-9 w-[92%] origin-bottom-left rounded-[3px]" style="rotate:-12deg;background-image:repeating-linear-gradient(105deg, oklch(0.13 0.012 264) 0 22px, oklch(0.98 0.005 254) 22px 44px)"></div>
+              <div class="relative overflow-hidden rounded-md bg-ink px-6 py-6 text-ink-foreground shadow-[0_30px_60px_-30px_oklch(0.2_0.03_265/0.6)]">
+                <div class="grain-overlay"></div>
+                <p class="font-heading text-2xl font-bold tracking-wide">THE CAST</p>
+                <div class="mt-4 flex items-center justify-between border-b border-white/15 pb-3 text-sm text-ink-foreground/80">
+                  <span>SCENE: 03</span><span>TAKE: 27</span>
+                </div>
+                <div class="label-mono mt-4 flex items-end justify-between text-[9px] text-ink-foreground/60">
+                  <span>ACM SSGMCE • SSGMCE</span><span class="text-sm tracking-normal normal-case">EST. 2005</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="label-mono text-primary">Cast &amp; crew — 2026-27</p>
+            <h2 class="grunge-title mt-4 text-[clamp(3rem,9vw,7rem)]">The Team</h2>
+            <p class="label-mono mt-6 inline-block rounded-lg border border-border bg-card px-4 py-2 shadow-sm">
+              Session 2026-27
+            </p>
+          </div>
+        </div>
+
+        <!-- Animated Filter Checkbox Bar -->
+        <div class="mt-14 flex flex-col items-center gap-5">
+          <div class="flex flex-wrap justify-center gap-3" id="teamFilterContainer">
+            
+            <label class="filter-checkbox-pill active" data-cat="all">
+              <span class="acm-checkbox-wrap">
+                <input type="checkbox" class="acm-checkbox-input filter-cb" value="all" checked>
+                <span class="acm-checkbox-box">
+                  <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </span>
+              <span class="font-heading font-semibold text-xs">All Domains</span>
+            </label>
+
+            <label class="filter-checkbox-pill" data-cat="management">
+              <span class="acm-checkbox-wrap">
+                <input type="checkbox" class="acm-checkbox-input filter-cb" value="management">
+                <span class="acm-checkbox-box">
+                  <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </span>
+              <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+              <span class="font-heading font-semibold text-xs">Management</span>
+            </label>
+
+            <label class="filter-checkbox-pill" data-cat="technical">
+              <span class="acm-checkbox-wrap">
+                <input type="checkbox" class="acm-checkbox-input filter-cb" value="technical">
+                <span class="acm-checkbox-box">
+                  <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </span>
+              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+              <span class="font-heading font-semibold text-xs">Technical</span>
+            </label>
+
+            <label class="filter-checkbox-pill" data-cat="creative">
+              <span class="acm-checkbox-wrap">
+                <input type="checkbox" class="acm-checkbox-input filter-cb" value="creative">
+                <span class="acm-checkbox-box">
+                  <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </span>
+              <span class="h-1.5 w-1.5 rounded-full bg-violet"></span>
+              <span class="font-heading font-semibold text-xs">Creative</span>
+            </label>
+
+            <label class="filter-checkbox-pill" data-cat="operations">
+              <span class="acm-checkbox-wrap">
+                <input type="checkbox" class="acm-checkbox-input filter-cb" value="operations">
+                <span class="acm-checkbox-box">
+                  <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </span>
+              </span>
+              <span class="h-1.5 w-1.5 rounded-full bg-mint"></span>
+              <span class="font-heading font-semibold text-xs">Operations</span>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Team Grid -->
+        <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3" id="teamCardsGrid">
+          
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="management">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/cb984e1b-0fc7-4aa3-abb4-91c415889fc1/ansh.jpg" alt="Ansh Gupta" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Ansh Gupta</p>
+              <p class="label-mono mt-1 text-primary">Chairperson</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2 lg:mt-12" data-category="management">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/f7d20849-b656-4e5d-bba2-469324182228/pratham.webp" alt="Pratham Patadiya" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Pratham Patadiya</p>
+              <p class="label-mono mt-1 text-primary">Vice-Chairperson</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="management operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/3003efcc-78a8-458b-b822-233f48154b18/nidhi.jpg" alt="Nidhi Arora" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Nidhi Arora</p>
+              <p class="label-mono mt-1 text-primary">Community Head</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="management operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/38d7c8b4-04d9-4894-96a6-4ad83e6795d0/priyansh.jpg" alt="Priyansh T" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Priyansh T</p>
+              <p class="label-mono mt-1 text-primary">Secretary</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2 lg:mt-12" data-category="management operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/915fcb3e-7428-4db0-a040-13c7a7adbbcc/arshad.jpg" alt="Arshad Khatib" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Arshad Khatib</p>
+              <p class="label-mono mt-1 text-primary">Secretary</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="management operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/c0043baf-7192-4688-b8a2-3695cb9ae949/rudraksh.jpg" alt="Rudraksh Fanse" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Rudraksh Fanse</p>
+              <p class="label-mono mt-1 text-primary">Treasurer</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="management operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/6ee4924a-3f86-4792-8fc2-843ac187e0e8/hatim.jpg" alt="Hatim Kutarwadliwala" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Hatim Kutarwadliwala</p>
+              <p class="label-mono mt-1 text-primary">Treasurer</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2 lg:mt-12" data-category="technical">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/f6c64b45-5208-40c5-8ca7-7b2a514fed42/aayush.jpg" alt="Aayush Prasad" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Aayush Prasad</p>
+              <p class="label-mono mt-1 text-primary">Developer</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="technical">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/442ca766-2d21-48d4-b231-172cc75ea920/siddharth.webp" alt="Siddharth Sheth" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Siddharth Sheth</p>
+              <p class="label-mono mt-1 text-primary">Developer</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="technical">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/ec1b54c9-0c01-4ee2-988b-713331a3ffe7/kartikeya.jpg" alt="Kartikeya Aryam" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Kartikeya Aryam</p>
+              <p class="label-mono mt-1 text-primary">Problem Setter</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2 lg:mt-12" data-category="technical">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/27687ebd-5c11-42b3-b2f0-2d90680fab80/paida.jpg" alt="Paida Raja Rathan" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Paida Raja Rathan</p>
+              <p class="label-mono mt-1 text-primary">Problem Setter</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="technical">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/84340920-aa6d-424b-b94f-e93803c703f1/nihar.webp" alt="Nihar Mehta" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Nihar Mehta</p>
+              <p class="label-mono mt-1 text-primary">Problem Setter</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="creative">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/cb9f4bea-eddc-4d17-a6dd-571b35c0d0f5/pal.jpg" alt="Pal Thakkar" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Pal Thakkar</p>
+              <p class="label-mono mt-1 text-primary">Designer</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2 lg:mt-12" data-category="creative">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/3c77fd9f-fe86-4b42-9755-fc08f344ccc5/naina.jpg" alt="Naina Jain" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Naina Jain</p>
+              <p class="label-mono mt-1 text-primary">Designer</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="creative operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/83d88d3c-6010-4178-87af-8f9f36262dad/mayank.jpg" alt="Mayank Behera" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Mayank Behera</p>
+              <p class="label-mono mt-1 text-primary">Social Media Manager</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/3ff84569-048a-451d-805f-b57d4869f033/sarath.jpg" alt="Sarath Chaitanya" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Sarath Chaitanya</p>
+              <p class="label-mono mt-1 text-primary">Core Member</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2 lg:mt-12" data-category="operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/e36da950-edc6-40f8-906e-1a921e2d44da/manav.jpg" alt="Manav Dhamecha" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Manav Dhamecha</p>
+              <p class="label-mono mt-1 text-primary">Core Member</p>
+            </figcaption>
+          </figure>
+
+          <figure class="team-card group relative overflow-hidden rounded-md border-2 border-gold/60 bg-ink shadow-[0_30px_60px_-40px_oklch(0.2_0.03_265/0.8)] transition-all duration-300 hover:-translate-y-2" data-category="operations">
+            <img src="https://id-preview--a9c8a57b-7e70-4f7b-9ac3-3a15fd37d7ad.lovable.app/__l5e/assets-v1/8e443694-e990-4a8a-a5a0-df8a75f6bd72/rushang.jpg" alt="Rushang Bagada" loading="lazy" class="aspect-[3/4] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]">
+            <div class="absolute inset-0 bg-gradient-to-t from-reel via-reel/25 to-transparent"></div>
+            <div class="grain-overlay"></div>
+            <figcaption class="absolute inset-x-0 bottom-0 p-5 text-reel-foreground">
+              <p class="font-heading text-lg font-semibold">Rushang Bagada</p>
+              <p class="label-mono mt-1 text-primary">Core Member</p>
+            </figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= JOIN US SECTION WITH ANIMATED CHECKBOXES ================= -->
+    <section id="join" class="py-24 bg-card/60 border-t border-border scroll-mt-20">
+      <div class="mx-auto max-w-4xl px-6 text-center">
+        <p class="label-mono text-primary">Recruitment 2026-27</p>
+        <p class="font-heading text-[clamp(2.2rem,5.5vw,3.8rem)] font-bold tracking-tight mt-3">"Your credit is waiting."</p>
+        <p class="mt-4 text-muted-foreground text-base max-w-xl mx-auto">
+          Applications open every academic year. Be part of the next chapter of builders, competitive programmers, and designers.
+        </p>
+
+        <!-- Interactive Domain Interest with Animated Checkboxes -->
+        <div class="mt-10 p-8 rounded-2xl border border-border bg-card shadow-sm text-left max-w-2xl mx-auto">
+          <p class="font-heading text-base font-semibold text-foreground">Select your interests to join:</p>
+          <p class="text-xs text-muted-foreground mt-1 mb-6">Choose any domains you want to contribute in:</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <label class="acm-checkbox-wrap p-3 rounded-lg border border-border hover:border-primary transition-colors bg-background/50">
+              <input type="checkbox" class="acm-checkbox-input" name="domain" value="cp" checked>
+              <span class="acm-checkbox-box">
+                <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="text-sm font-medium text-foreground">Competitive Programming</span>
+            </label>
+
+            <label class="acm-checkbox-wrap p-3 rounded-lg border border-border hover:border-primary transition-colors bg-background/50">
+              <input type="checkbox" class="acm-checkbox-input" name="domain" value="dev" checked>
+              <span class="acm-checkbox-box">
+                <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="text-sm font-medium text-foreground">Web / App Development</span>
+            </label>
+
+            <label class="acm-checkbox-wrap p-3 rounded-lg border border-border hover:border-primary transition-colors bg-background/50">
+              <input type="checkbox" class="acm-checkbox-input" name="domain" value="design">
+              <span class="acm-checkbox-box">
+                <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="text-sm font-medium text-foreground">UI/UX &amp; Graphic Design</span>
+            </label>
+
+            <label class="acm-checkbox-wrap p-3 rounded-lg border border-border hover:border-primary transition-colors bg-background/50">
+              <input type="checkbox" class="acm-checkbox-input" name="domain" value="ops">
+              <span class="acm-checkbox-box">
+                <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </span>
+              <span class="text-sm font-medium text-foreground">Event Operations &amp; Media</span>
+            </label>
+
+          </div>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-4 items-center">
+            <input type="email" placeholder="Enter your institute email..." class="field-input flex-1 !py-3.5" id="joinEmailInput">
+            <button type="button" class="btn-primary !w-auto px-8 !py-3.5 whitespace-nowrap" id="applyBtn">
+              Apply Now →
+            </button>
+          </div>
+          <p id="joinMsg" class="hidden mt-3 text-xs text-mint font-medium">✓ Application received! We will send you the screening test link on your institute email.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= ANIMATED KINETIC PARALLAX FOOTER ================= -->
+  <footer class="acm-footer">
+    <!-- Top Animated Laser Hairline -->
+    <div class="acm-footer-top-line"></div>
+
+    <!-- Zone A: Technical Blueprint & Directory -->
+    <div class="acm-footer-zoneA">
+      <div class="acm-footer-inner">
+        <!-- Top Brand & Telemetry Row -->
+        <div class="grid gap-10 lg:grid-cols-12 pb-14 border-b border-border items-start">
+          <div class="lg:col-span-5">
+            <div class="flex items-center gap-3">
+              <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-white font-heading font-black text-base shadow-md">ACM</span>
+              <div>
+                <p class="font-heading font-bold text-lg text-foreground leading-tight">ACM STUDENT CHAPTER</p>
+                <p class="label-mono text-[10px] text-muted-foreground tracking-[0.14em]">SSGMCE SHEGAON • CHAPTER #6829</p>
+              </div>
+            </div>
+
+            <p class="mt-5 text-sm text-muted-foreground leading-relaxed max-w-md font-sans">
+              Building technology. Building people. A premier collegiate computing society fostering competitive programmers, full-stack builders, and open-source innovators at Shri Sant Gajanan Maharaj College of Engineering.
+            </p>
+
+            <!-- Live Telemetry Badge -->
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <div class="footer-badge-pulse">
+                <span class="footer-pulse-dot">
+                  <span class="ping"></span>
+                  <span class="dot"></span>
+                </span>
+                <span>All Systems Online</span>
+              </div>
+              <span class="label-mono text-[10px] text-muted-foreground px-3 py-1.5 rounded-full border border-border bg-secondary/50">Latency: 14ms</span>
+              <span class="label-mono text-[10px] text-muted-foreground px-3 py-1.5 rounded-full border border-border bg-secondary/50">SGBAU Affiliated</span>
+            </div>
+
+            <!-- Social Icons with Micro-interactions -->
+            <div class="mt-7 flex items-center gap-2.5">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+              </a>
+              <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Discord">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="1"></circle><circle cx="15" cy="12" r="1"></circle><path d="M7.5 7.5c3.5-1 5.5-1 9 0 1.5 3 2 6.5 1 10-2.5 1.5-5 2-8.5 2s-6-.5-8.5-2c-1-3.5-.5-7 1-10 1-.3 2-.6 3-.7"></path></svg>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+              </a>
+              <a href="mailto:acm@ssgmce.ac.in" class="footer-social-btn" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+              </a>
+              <a href="https://acm.org" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="ACM Global">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" x2="22" y1="12" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- 4 Organized Columns -->
+          <div class="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-8">
+            <div>
+              <p class="footer-col-head"><span>//</span> Explore</p>
+              <ul class="mt-4 space-y-2.5">
+                <li><a href="#hero" class="footer-nav-link"><span class="footer-arrow">→</span> Home</a></li>
+                <li><a href="#about" class="footer-nav-link"><span class="footer-arrow">→</span> About Us</a></li>
+                <li><a href="events.html" class="footer-nav-link"><span class="footer-arrow">→</span> Events Hub</a></li>
+                <li><a href="projects.html" class="footer-nav-link"><span class="footer-arrow">→</span> Projects Lab</a></li>
+                <li><a href="blog.html" class="footer-nav-link"><span class="footer-arrow">→</span> Tech Blog</a></li>
+                <li><a href="#team" class="footer-nav-link"><span class="footer-arrow">→</span> Executive Team</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="footer-col-head"><span>//</span> Community</p>
+              <ul class="mt-4 space-y-2.5">
+                <li><a href="#join" class="footer-nav-link"><span class="footer-arrow">→</span> Membership</a></li>
+                <li><a href="leaderboard.html" class="footer-nav-link"><span class="footer-arrow">→</span> Leaderboard</a></li>
+                <li><a href="events.html" class="footer-nav-link"><span class="footer-arrow">→</span> DotSlash 2026</a></li>
+                <li><a href="leaderboard.html" class="footer-nav-link"><span class="footer-arrow">→</span> ICPC Showdown</a></li>
+                <li><a href="projects.html" class="footer-nav-link"><span class="footer-arrow">→</span> FabLab Hardware</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="footer-col-head"><span>//</span> Portals</p>
+              <ul class="mt-4 space-y-2.5">
+                <li><a href="signin.html" class="footer-nav-link"><span class="footer-arrow">→</span> Student Sign In</a></li>
+                <li><a href="signin.html" class="footer-nav-link"><span class="footer-arrow">→</span> Chapter Auth</a></li>
+                <li><a href="leaderboard.html" class="footer-nav-link"><span class="footer-arrow">→</span> Codeforces Sync</a></li>
+                <li><a href="events.html" class="footer-nav-link"><span class="footer-arrow">→</span> Register Team</a></li>
+                <li><a href="https://acm.org" target="_blank" rel="noopener noreferrer" class="footer-nav-link"><span class="footer-arrow">→</span> ACM.org Global</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <p class="footer-col-head"><span>//</span> Campus</p>
+              <div class="mt-4 space-y-2 text-xs text-muted-foreground font-sans leading-relaxed">
+                <p class="font-semibold text-foreground">SSGMCE Campus</p>
+                <p>Dept. of Computer Science</p>
+                <p>Shegaon, Buldhana District</p>
+                <p>Maharashtra, PIN: 444203</p>
+                <div class="pt-2">
+                  <a href="mailto:acm@ssgmce.ac.in" class="label-mono text-[10px] text-primary hover:underline block">acm@ssgmce.ac.in</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Tech Specs & Copyright Bar -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div>
+            <p class="label-mono text-[11px] text-muted-foreground font-medium">© 2026 ACM SSGMCE Student Chapter. All rights reserved.</p>
+            <p class="label-mono mt-1 text-[10px] text-muted-foreground/80">Made with ♥ by ACM SSGMCE Chapter Web Team</p>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <span class="label-mono text-[10px] text-muted-foreground font-semibold tracking-wider border border-border px-3 py-1 rounded-md bg-secondary/40">
+              20.7936° N, 76.6917° E
+            </span>
+            <span class="label-mono text-[10px] text-primary font-bold border border-primary/30 px-3 py-1 rounded-md bg-primary/10">
+              v2.6.4-stable
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ================= INTEGRATED SIGN IN MODAL ================= -->
+<div id="signInModal" role="dialog" aria-modal="true" aria-labelledby="signInTitle">
+  <div class="modal-panel">
+    
+    <!-- Close Button -->
+    <button type="button" id="closeSignInBtn" class="absolute top-5 right-5 text-muted-foreground hover:text-foreground p-1 rounded-md transition-colors" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+
+    <div class="flex justify-center">
+      <span class="float-soft flex h-14 w-14 items-center justify-center rounded-2xl text-base font-heading font-black text-white shadow-lg" style="background:linear-gradient(135deg,#1f54e1,#4a7bf7)">acm</span>
+    </div>
+
+    <h2 id="signInTitle" class="mt-4 text-center font-heading text-2xl font-bold tracking-tight">Sign In</h2>
+    <p class="mt-1 text-center text-sm text-muted-foreground">
+      Don't have an account? <a href="signin.html" class="font-semibold text-primary underline underline-offset-2">Register</a>
+    </p>
+
+    <div class="warn-box mt-5">
+      <span aria-hidden="true" class="text-base">⚠</span>
+      <span>Public sign in is currently disabled. You must use your SSGMCE institutional email ID.</span>
+    </div>
+
+    <form class="mt-5 space-y-4" onsubmit="handleModalSignIn(event);">
+      <div>
+        <label class="label-mono block text-muted-foreground">Institutional Email</label>
+        <input type="email" id="modalEmail" required class="field-input mt-1.5" placeholder="rollnum@deptcode.ssgmce.ac.in">
+        <p class="mt-1 text-[11px] text-muted-foreground">* Please use your official SSGMCE institute email ID</p>
+      </div>
+      <div>
+        <div class="flex items-center justify-between">
+          <label class="label-mono text-muted-foreground">Password</label>
+          <a href="#" class="label-mono text-primary text-[10px] hover:underline">Forgot Password?</a>
+        </div>
+        <div class="relative mt-1.5">
+          <input id="modalPwField" type="password" required class="field-input pr-12" placeholder="••••••••">
+          <button type="button" id="modalPwToggle" class="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground" aria-label="Toggle password visibility">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Animated Checkbox inside modal -->
+      <div class="pt-1">
+        <label class="acm-checkbox-wrap">
+          <input type="checkbox" class="acm-checkbox-input" checked>
+          <span class="acm-checkbox-box">
+            <svg viewBox="0 0 24 24" class="acm-checkbox-svg"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </span>
+          <span class="text-xs text-muted-foreground">Remember my institutional session on this device</span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-primary mt-2" id="modalSubmitBtn">SIGN IN</button>
+    </form>
+
+    <div class="mt-6 flex items-center gap-3 text-xs text-muted-foreground">
+      <span class="h-px flex-1 bg-border"></span>
+      <span class="label-mono text-[10px]">or continue with</span>
+      <span class="h-px flex-1 bg-border"></span>
+    </div>
+
+    <button type="button" class="btn-google mt-4" onclick="handleGoogleSignIn()">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.2 2.8-2.5 3.6v3h4C22.3 19 23.5 16 23.5 12.3z"></path><path fill="#34A853" d="M12 24c3.2 0 6-1 8-2.9l-4-3c-1.1.8-2.5 1.2-4 1.2-3.1 0-5.7-2.1-6.6-4.9H1.3v3.1C3.3 21.3 7.3 24 12 24z"></path><path fill="#FBBC05" d="M5.4 14.4c-.2-.7-.4-1.5-.4-2.4s.1-1.6.4-2.4V6.5H1.3C.5 8.1 0 10 0 12s.5 3.9 1.3 5.5l4.1-3.1z"></path><path fill="#EA4335" d="M12 4.7c1.8 0 3.3.6 4.5 1.8l3.4-3.4C17.9 1.2 15.2 0 12 0 7.3 0 3.3 2.7 1.3 6.5l4.1 3.1C6.3 6.8 8.9 4.7 12 4.7z"></path></svg>
+      Continue with Google Workspace
+    </button>
+
+    <div class="mt-4 text-center">
+      <a href="signin.html" class="label-mono text-[10px] text-muted-foreground hover:text-primary transition-colors">
+        Open Standalone Sign In Page ↗
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= JAVASCRIPT LOGIC ================= -->
+<script src="index.js" defer></script>
+</body>
+</html>
